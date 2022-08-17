@@ -1,6 +1,6 @@
-import Expense from "./components/Expense";
-import Card from "./components/Card"
-import "./components/Expense.css";
+import Expense from "./components/Expenses/Expense";
+import Card from "./components/UI/Card"
+import "./components/Expenses/Expense.css";
 const expenses = [
   {
     id: "e1",
