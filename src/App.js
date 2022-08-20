@@ -1,6 +1,10 @@
 import Expense from "./components/Expenses/Expense";
 import Card from "./components/UI/Card"
+import NewExpense from "./components/NewExpense/NewExpense";
 import "./components/Expenses/Expense.css";
+import ExpensesFilter from "./components/Expenses/ExpensesFilter";
+import { useState } from "react";
+
 const expenses = [
   {
     id: "e1",
@@ -24,10 +28,22 @@ const expenses = [
 ];
 
 const App = () => {
+  const childToParentData = (expenseData) => {
+    expenses.push(expenseData)
+    console.log(expenseData);
+  } 
+
+  const [selecteYear, setSelectYear] = useState("2022")
+
+  const setyear = (year) => {
+    setSelectYear(year)
+  }
+  
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpense onNewStock={childToParentData} />
       <Card className = 'expenses' >
+        <ExpensesFilter value= {selecteYear} onChangeFilter = {setyear} />
         {expenses.map((item) => (
           <Expense item = {item}
           />
